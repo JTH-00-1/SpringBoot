@@ -1,0 +1,112 @@
+    <!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <link rel="stylesheet" href="/css/style.css ">
+    <link rel="stylesheet" href="/css/media.css ">
+    <link rel="stylesheet" href="/css/style2.css ">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+<body>
+<div class="main">
+    <div class="main_page">
+        <div class="main_page_main">
+            <div class="main_page_title">
+                <p>부천대학교 시설 예약</p>
+                <strong><span class="link-name" th:text="${statement == '진행중인이벤트' ? '진행중인 이벤트' : '종료된 이벤트'}"></span></strong>
+            </div>
+        </div>
+    </div>
+    <div class="main-img-box2">
+        <img class="main-img2" src="/img/List.png">
+    </div>
+    <div class="board_wrap">
+        <div class="board_link">
+            <a href="/home"><img class="noticelink" src="/img/homeicon.png"></a>
+            <a href="/question/questionmain">
+                <p>> COMMUNITY ></p>
+            </a>
+            <a href="#"><p>이벤트</p></a>
+        </div>
+        <div class="board_list_wrap">
+            <div class="board_list">
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">글쓴이</div>
+                    <div class="date">작성일</div>
+                </div>
+                <div class="text-center" th:each="event, loop : ${paging}">
+                    <div class="num"
+                         th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></div>
+                    <!--번호-->
+                    <div class="title"><a th:href="@{${statement == '진행중인이벤트'} ?
+                    '/eventPage/nowevent/' + ${event.eventhash} : '/eventPage/closeevent/' +${event.eventhash}}"
+                                          th:text="${event.title}"></a></div> <!--제목-->
+                    <div class="writer"><span th:if="${event.uid != null}"
+                                              th:text="${event.uid.nickname}"></span></div>
+                    <!--"작성자" 열입니다. 이 열은 "question" 객체의 "author" 속성이 null이 아닌 경우 "username" 값-->
+                    <div class="date" th:text="${#temporals.format(event.Date, 'yyyy-MM-dd HH:mm')}"></div>
+                    <!--"createDate" 값을 "yyyy-MM-dd HH:mm" 형식으로 표시합니다. #temporals.format 표현식을 사용하여 날짜를 형식화-->
+                </div>
+                <!-- 페이징처리 시작 -->
+                <div class="board_page" th:if="${!paging.isEmpty()}">
+                    <!--첫 번째 div 요소는 "paging" 객체가 비어 있지 않은 경우에만 나타납니다. 이 div 요소는 페이지 링크 목록을 감싸고 있습니다.-->
+                    <ul class="pagination justify-content-center">
+                        <a class="bt prev" th:href="@{${kw==null} ? |?page=${paging.number}| : |?kw=${kw}&page=${paging.number}|}"
+                           th:classappend="${!paging.hasPrevious} ? 'disabled'" th:data-page="${paging.number-1}">
+                            <span><</span>
+                        </a>
+                        <!--"이전" 페이지 링크를 나타냅니다. th:classappend 속성은 "paging" 객체에 이전 페이지가 없는 경우 "disabled" 클래스를 추가-->
+                        <a class="num" th:each="page: ${#numbers.sequence(startPage, endPage)}"
+                           th:classappend= "${nowPage==page} ? 'disabled'" th:text="${page}" th:href="@{${kw==null} ? |?page=${page}| : |?kw=${kw}&page=${page}|}" style="width:32px">
+                        </a>
+
+                        <a class="bt next" th:href="@{${kw==null} ? |?page=${paging.number+2}| : |?kw=${kw}&page=${paging.number+2}|}"
+                           th:classappend="${!paging.hasNext} ? 'disabled'" th:data-page="${paging.number+1}">
+                            <span>></span>
+                        </a>
+                        <!--"다음" 페이지 링크를 나타냅니다. th:classappend 속성은 "paging" 객체에 다음 페이지가 없는 경우 "disabled" 클래스를 추가-->
+                    </ul> <!--페이지 링크 목록을 나타냅니다. justify-content-center 클래스는 페이지 링크 목록을 중앙 정렬합니다.-->
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <!--관리자아니면 버튼 비활성화-->
+                <a th:if="${roleid == '관리자' && statement == '진행중인이벤트'}"  th:href="@{/eventPage/nowevent/create}" class="on">등록</a>
+            </div>
+            <div class="borderline"></div>
+
+            <div class="search">
+                <input type="text" id="search_kw" class="form-control" th:value="${kw}" placeholder="검색어를 입력해주세요.">
+                <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 페이징처리 끝 -->
+<form th:action method="get" id="searchForm">
+    <input type="hidden" id="kw" name="kw" th:value="${kw}">
+    <input type="hidden" id="page" name="page" th:value="${paging.number}">
+</form>
+
+<script layout:fragment="script" type='text/javascript'>
+const page_elements = document.getElementsByClassName("page-link");
+Array.from(page_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        document.getElementById('page').value = this.dataset.page;
+        document.getElementById('searchForm').submit();
+    });
+});
+const btn_search = document.getElementById("btn_search");
+btn_search.addEventListener('click', function() {
+    if(document.getElementById('search_kw').value!=""){
+    document.getElementById('kw').value = document.getElementById('search_kw').value;
+    document.getElementById('page').value = 1;
+    document.getElementById('searchForm').submit();
+    }
+});
+</script>
+</body>
+</html>

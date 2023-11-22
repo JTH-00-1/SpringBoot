@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 10px;
+}
+.disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+}
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.main_page{
+    text-align: center;
+}
+.board_wrap{
+    width: 1000px;
+    margin: 100px auto;
+}
+.board_wrap strong {
+    font-size: 3rem;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.board_link{
+    text-align: center;
+    padding-left: 700px;
+}
+
+.board_link p{
+    display: inline-block;
+    font-size: 15px;
+}
+.board_link img {
+    width: 15px;
+}
+.board_main{
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+}
+.board_main1{
+    flex: 1;
+    margin-right: 50px;
+}
+.board_main2{
+    flex: 1;
+    margin-left: 50px;
+}
+.main_page_main {
+    width: auto;
+    height: 350px;
+}
+.main_page_title {
+    padding-right: 300px;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.main_page_title p {
+    padding-right: 500px;
+    font-size: 2.5rem;
+}
+.main_page_title strong {
+    font-size: 5rem;
+}
+.board_wrap3 {
+    width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.board_title3{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.board_title3 strong{
+    font-size: 4rem;
+}
+.board_title3 p{
+    font-size: 1.5rem;
+}
+.board_main strong {
+    font-size: 3rem;
+    margin-left: 10px;
+}
+.board_main p {
+    font-size: 1.5rem;
+    display: inline-block;
+    margin-left: 10px;
+}
+.notice{
+    margin-bottom: 200px;
+}
+#notice1{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000;
+    border: 3px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+#notice1:hover {
+    background-color: #E2E2E2;
+}
+#notice2{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000;
+    border: 3px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+#notice2:hover {
+    background-color: #E2E2E2;
+}
+#notice3{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000;
+    border: 3px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+#notice3:hover {
+    background-color: #E2E2E2;
+}
+#notice4{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000;
+    border: 3px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+#notice4:hover {
+    background-color: #E2E2E2;
+}
+#notice5{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000;
+    border: 3px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+#notice5:hover {
+    background-color: #E2E2E2;
+}
+ul.pagination.justify-content-center {
+    margin: 20px;
+}
+input#search_kw {
+     height: 45px;
+     border-radius: 5px;
+     padding: 10px;
+ }
+button#btn_search {
+    border: none;
+    height: 45px;
+    color: white;
+    background: #9ca6ac;
+    border-radius: 5px;
+    padding: 10px;
+}
+.board_list {
+    margin-top: 20px;
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+.board_list > div {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+
+.board_list > div.top {
+    border-bottom: 1px solid #999;
+}
+
+.board_list > div:last-child {
+    border-bottom: 1px solid #000;
+}
+
+.board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.board_list > div.top > div {
+    font-weight: 600;
+}
+.board_list .title1 {
+    width: 50%;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.board_list .writer1 {
+    width: 20%;
+}
+
+.board_list .date1 {
+    width: 20%;
+}
+.main-img-box {
+    border: 0px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+}
+.main-img {
+    margin-left: 200px;
+    width: 30%;
+}

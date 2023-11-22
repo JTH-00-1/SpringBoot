@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성 및 수정</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+<body>
+<div class="main">
+    <div class="board_wrap">
+        <form th:object="${createForm}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <!--<div th:replace="form_errors :: formErrorsFragment"></div>-->
+            <div class="board_write_wrap">
+                <div class="board_write">
+                    <div class="title">
+                        <dl>
+                            <dt>제목</dt>
+                            <dd><input type="text" th:field="*{title}" placeholder="제목 입력"></dd>
+                        </dl>
+                    </div>
+                    <div class="cont">
+                        <textarea th:field="*{content}" rows="10" placeholder="내용 입력"></textarea>
+                    </div>
+                    <div class="cont">
+                        <input type = "datetime-local" th:if = "${select == 'event'}" th:field="*{enddate}" rows="10" placeholder="종료일자 입력"></input>
+                    </div>
+                </div>
+                <div class="bt_wrap">
+                    <input type="submit" value="저장하기" class="on">
+                    <a th:href="@{${select == 'notice'} ? '/noticePage/notice' : '/eventPage/nowevent'}">취소</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="board_view_wrap">
+    <div class="board_view">
+        <strong>제목</strong>
+        <div class="title" th:text="${post.title}"/>
+        <div class="info">
+            <dl>
+                <dt>글쓴이</dt>
+                <dd>
+                    <div>
+                        <span th:if="${post.uid != null}" th:text="${post.uid.nickname}"></span>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>최초 작성일</dt>
+                <dd>
+                    <div th:text="${#temporals.format(post.date, 'yyyy-MM-dd HH:mm')}"></div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>수정일</dt>
+                <dd>
+                    <div th:text="${#temporals.format(post.fixdate, 'yyyy-MM-dd HH:mm')}"></div>
+                </dd>
+            </dl>
+            <div class="board_menu">
+                <th:block th:switch="${select}">
+                    <a th:case="'notice'" th:href="@{|modify/${post.noticehash}|}"
+                       class="btn btn-sm btn-outline-secondary"
+                       sec:authorize="isAuthenticated()"
+                       th:if="${post.uid != null and #authentication.getPrincipal().getUsername() == post.uid.nickname}"
+                       th:text="수정"></a>
+                    <a th:case="'event'" th:href="@{|modify/${post.eventhash}|}"
+                       class="btn btn-sm btn-outline-secondary"
+                       sec:authorize="isAuthenticated()"
+                       th:if="${post.uid != null and #authentication.getPrincipal().getUsername() == post.uid.nickname}"
+                       th:text="수정"></a>
+                </th:block>
+                <th:block th:switch="${select}">
+                    <a th:case="'notice'" th:href="@{|delete/${post.noticehash}|}"
+                       class="btn btn-sm btn-outline-secondary"
+                       sec:authorize="isAuthenticated()"
+                       th:if="${post.uid != null and #authentication.getPrincipal().getUsername() == post.uid.nickname}"
+                       th:text="삭제"></a>
+                    <a th:case="'event'" th:href="@{|delete/${post.eventhash}|}"
+                       class="btn btn-sm btn-outline-secondary"
+                       sec:authorize="isAuthenticated()"
+                       th:if="${post.uid != null and #authentication.getPrincipal().getUsername() == post.uid.nickname}"
+                       th:text="삭제"></a>
+                </th:block>
+            </div>
+        </div>
+        <p>내용</p>
+        <div class="cont" th:utext="${post.content}"/>
+    </div>
+</div>
+</body>
+</html>

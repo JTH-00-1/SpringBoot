@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Login.css">
+    <script 
+    src="https://kit.fontawesome.com/44a490f39f.js" 
+    crossorigin="anonymous"
+        ></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2>로그인</h2>
+        <form th:action="@{/login}" method="post">
+          <div class="form-control">
+            <input type="text" name="userid" required />
+            <label>아이디</label>
+          </div>
+          <div class="form-control">
+            <input type="password" name="password" required />
+            <label>비밀번호</label>
+          </div>
+
+          <button class="btn" type="submit" >이동</button>
+  
+          <p class="text">회원이 아니신가요? <a href="/signup">회원가입</a></p>
+        </form>
+      </div>
+</body>
+</html>

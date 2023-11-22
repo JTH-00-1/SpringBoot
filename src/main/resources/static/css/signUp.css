@@ -1,0 +1,161 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html{
+    height: 100%;    
+}
+body{
+    margin: 0;
+    height:100%;
+    background:#f5f6f7;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+}
+#logo{
+    width:240px;
+    height:44px;
+    cursor:pointer;
+}
+#header{
+    padding-top:62px;
+    padding-bottom:20px;
+    text-align:center;
+    margin:0;
+}
+#wrapper{
+    position:relative;
+    height: 100%;
+}
+#content{
+    position:absolute;
+    left:50%;
+    transform: translate(-50%);
+    width:460px;
+}
+
+/* 입력폼 */
+h3{
+    margin:19px 0 8px;
+    font-size:14px;
+    font-weight:700;
+
+}
+.box{
+    display:block;
+    width:100%;
+    height:51px;
+    border:solid 1px #dadada;
+    padding:10px 14px 10px 14px;
+    box-sizing:border-box;
+    background: #FFFFFF;
+    position:relative;
+
+}
+.int {
+    display:block;
+    position: relative;
+    width:100%;
+    height:29px;
+    border:none;
+    background: #FFFFFF;
+    font-size:15px;
+}
+.HomeTitle{
+    justify-content:center;
+    align-items: center;
+    margin:0 auto;
+    padding-right:40px;
+    display: flex;
+}
+input{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.box.int_id{
+    padding-right:40px;
+}
+.box.int_pass{
+    padding-right:40px;
+}
+.box.int_pass_check{
+    padding-right:40px;
+}
+.passwordImg{
+    width:18px;
+    height:20px;
+    display:inline-block;
+    position:absolute;
+    top:50%;
+    right:16px;
+    margin-top:-10px;
+    cursor:pointer;
+    pointer-events: none;
+}
+#birthday_wrap{
+    display:table;
+    width:100%;
+}
+#birthday_yy{
+    display:table-cell;
+    width:147px;
+}
+#birthday_mm{
+    display:table-cell;
+    width:147px;
+    vertical-align: middle;
+}
+#birthday_dd{
+    display:table-cell;
+    width:147px;
+}
+#birthday_mm,#birthday_dd{
+    padding-left:10px;
+}
+
+select{
+    width:100%;
+    height:29px;
+    font-size:15px;
+    background: #fff;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-align: start;
+    border: none;
+    cursor: default;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* Error Message */
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 12px;
+    color: #B3261E;    
+    display: none;
+}
+
+#alertTxt {
+    position: absolute;
+    top: 19px;
+    right: 38px;
+    font-size: 12px;
+    color: #B3261E;
+    display: none;
+}
+
+/* 버튼 */
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    width: 100%;
+    padding: 21px 8px 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #6750A4;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 30px;
+}
+
