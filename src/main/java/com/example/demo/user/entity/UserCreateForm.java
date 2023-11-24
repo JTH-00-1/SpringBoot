@@ -6,7 +6,7 @@ import lombok.*;
 @Data
 public class UserCreateForm {
 
-    @NotEmpty(message = "사용자이름은 필수항목입니다.")
+    @NotEmpty(message = "사용자 이름은 필수항목입니다.")
     private String username;
 
     @NotEmpty(message = "사용자ID는 필수항목입니다.")
@@ -22,6 +22,6 @@ public class UserCreateForm {
     @Email
     private String email;
     
-    @NotEmpty(message="핸드폰번호는 필수항목입니다.")
+    @NotEmpty(message="핸드폰 번호는 필수항목입니다.")
     private String phone;
 }
