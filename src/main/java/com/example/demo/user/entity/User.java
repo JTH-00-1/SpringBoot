@@ -12,7 +12,7 @@ public class User {
     @Id
     @Column(name="UID")
     private String userid;
-
+    @Column(name="Nick_Name")
     private String nickname;
 
     private String password;
@@ -24,6 +24,6 @@ public class User {
     private String Email;
 
     private String role;
-
+    @Column(name="Ban_Check")
     private Boolean bancheck;
 }
